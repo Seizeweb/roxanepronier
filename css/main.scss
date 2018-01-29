@@ -1,0 +1,80 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+// 1. Import the initial variables
+@import "bulma/utilities/initial-variables";
+@import "bulma/utilities/functions";
+
+// 2. Set your own initial variables
+// Update blue
+$blue: #72d0eb;
+// Add pink and its invert
+$pink: #ffb3b3;
+$pink-invert: #fff;
+// Add a serif family
+$family-serif: 'Press Start 2P', cursive;
+
+// 3. Set the derived variables
+// Use the new pink as the primary color
+$primary: $blue;
+$primary-invert: $pink-invert;
+// Use the existing orange as the danger color
+$danger: $orange;
+// Use the new serif family
+$family-primary: $family-serif;
+
+// 4. Setup your Custom Colors
+$linkedin: #0077b5;
+$linkedin-invert: findColorInvert($linkedin);
+$twitter: #55acee;
+$twitter-invert: findColorInvert($twitter);
+$github: #333;
+$github-invert: findColorInvert($github);
+
+// 5. Add new color variables to the color map.
+@import "bulma/utilities/derived-variables.sass";
+$addColors: (
+  "twitter":($twitter, $twitter-invert),
+  "linkedin": ($linkedin, $linkedin-invert),
+  "github": ($github, $github-invert)
+);
+$colors: map-merge($colors, $addColors);
+
+// $box-color: #fff;
+$box-radius: 3px;
+// $box-background-color: $primary;
+
+// 6. Import the rest of Bulma
+
+@import "bulma";
+
+.menu{
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 250px;
+}
+
+.section {
+  padding: 3.25rem 1.5rem;
+  margin-left: 250px;
+}
+
+.container{
+	width: 100%;
+}
+
+.navbar-brand {
+	a{
+		font-weight: 700;
+		color: $primary;
+	}
+}
+
+h4{
+	font-weight: 700;
+	font-size: $size-4;
+}

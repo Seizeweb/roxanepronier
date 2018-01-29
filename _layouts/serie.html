@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+{% assign pages = site.pages  | where: 'layout', 'item' | group_by: 'serie' %}
+
+<div class="columns">
+
+  {% for serie in pages %}
+
+	{% for grouped_pages in serie.items %}
+
+    <!--  -->
+
+		<div class="column is-4">
+		  <img src="img/{{page.number}}.jpg" alt="">
+		  {{page.title}}
+		</div>
+
+    {% endfor %}
+
+  {% endfor %}
+
+</div>
