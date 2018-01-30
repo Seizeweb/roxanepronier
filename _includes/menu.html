@@ -6,18 +6,22 @@
         Roxane Pronier
       </a>
     </li>
-    <li>
+    <li class="menu-item">
       <a class="is-active">Paintings</a>
       <ul>
-        <li><a>Serie I</a></li>
-        <li><a>Serie II</a></li>
-        <li><a>Serie III</a></li>
+
+        {% assign pages = site.pages  | where: 'layout', 'serie' %}
+
+        {% for page in pages %}
+          <li class="menu-item"><a href="{{ page.permalink }}">{{ page.serie }}</a></li>
+        {% endfor %}
+
       </ul>
     </li>
-    <li><a>News</a></li>
-    <li><a>Exhibition</a></li>
-    <li><a>Bio</a></li>
-    <li><a>Contact</a></li>
+    <li class="menu-item"><a>News</a></li>
+    <li class="menu-item"><a>Exhibition</a></li>
+    <li class="menu-item"><a>Bio</a></li>
+    <li class="menu-item"><a>Contact</a></li>
   </ul>
 
   <button class="button navbar-burger">

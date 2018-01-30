@@ -2,23 +2,26 @@
 layout: default
 ---
 
-{% assign pages = site.pages  | where: 'layout', 'item' | group_by: 'serie' %}
+{% assign pages = site.pages  | where: 'layout', 'item' | where: 'serie', page.serie %}
 
-<div class="columns">
+<h1>{{ page.serie }}</h1>
 
-  {% for serie in pages %}
+  {% assign rows = pages.size | divided_by: 3.0 | ceil %}
 
-	{% for grouped_pages in serie.items %}
+  {% for i in (1..rows) %}
+    
+    <div class="columns">
 
-    <!--  -->
+      {% assign offset = forloop.index0 | times: 3 %}
 
-		<div class="column is-4">
-		  <img src="img/{{page.number}}.jpg" alt="">
-		  {{page.title}}
-		</div>
+      {% for page in pages limit:3 offset:offset %}
+        <div class="column is-4">
+          <img src="img/{{ page.number }}.jpg" alt="">
+          <h6>{{page.title}}</h6>
+          <small>{{ page.about }} </small>
+        </div>
+      {% endfor %}
 
-    {% endfor %}
+    </div>
 
   {% endfor %}
-
-</div>

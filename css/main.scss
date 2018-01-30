@@ -58,6 +58,29 @@ $box-radius: 3px;
 	width: 250px;
 }
 
+.menu-item {
+	background: none;
+
+  a {
+    &.is-active{
+      background: none;
+    }
+
+    &:hover{
+      background: none;
+    }
+  }
+}
+
+.menu-list {
+
+  a {
+    &:hover{
+      background: none;
+    }
+  }
+}
+
 .section {
   padding: 3.25rem 1.5rem;
   margin-left: 250px;
