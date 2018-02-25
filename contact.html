@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+<section class="section">
+	<div class="container">
+	  <form id="contactform" method="POST">
+        <div class="columns">
+          <div class="column is-6">
+            <input type="text" name="name" placeholder="Your name">
+          </div>
+          <div class="column is-6">
+            <input type="email" name="_replyto" placeholder="Your email">
+          </div>
+        </div>
+        <input type="hidden" name="_subject" value="Website contact" />
+        <div class="columns">
+          <div class="column is-12">
+            <textarea name="message" placeholder="Your message"></textarea>
+            <input type="text" name="_gotcha" style="display:none" />
+          </div>
+        </div>
+        <input class="button" type="submit" value="Send">
+    </form>
+	</div>
+</section>

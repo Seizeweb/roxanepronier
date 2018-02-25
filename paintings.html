@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+{% assign series = site.pages  | where: 'layout', 'serie' | sort: 'order' %}
+
+
+<section class="section">
+  <div class="container">
+
+    {% assign rows = series.size | divided_by: 3.0 | ceil %}
+
+    {% for i in (1..rows) %}
+      
+      <div class="columns">
+
+        {% assign offset = forloop.index0 | times: 3 %}
+
+        {% for serie in series limit:3 offset:offset %}
+
+          {% assign pages = site.pages  | where: 'layout', 'item' | where: 'serie', serie.serie %}
+
+          {% assign preview = pages.first %}
+
+          <a href="{{ site.url }}/series/{{serie.serie}}/index.html" class="column is-4 item">
+            <img src="series/{{serie.serie}}/img/{{ preview.number }}.jpg" alt="">
+            <h5>{{serie.serie}}</h5>
+          </a>
+        {% endfor %}
+
+      </div>
+
+    {% endfor %}
+  </div>
+</section>

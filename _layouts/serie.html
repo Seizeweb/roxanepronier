@@ -2,26 +2,40 @@
 layout: default
 ---
 
-{% assign pages = site.pages  | where: 'layout', 'item' | where: 'serie', page.serie %}
+{% assign pages = site.pages  | where: 'layout', 'item' | where: 'serie', page.serie | group_by: 'medium' | reverse %}
 
-<h1>{{ page.serie }}</h1>
+<section class="section is-paddingless-top">
+  <div class="container">
+    <h1 class="serie-title">{{ page.serie }}</h1>
 
-  {% assign rows = pages.size | divided_by: 3.0 | ceil %}
+    {% for group in pages %}
 
-  {% for i in (1..rows) %}
-    
-    <div class="columns">
+      <h6>{{group.name}}</h6>
 
-      {% assign offset = forloop.index0 | times: 3 %}
+      <p>{{item.title}}</p>
 
-      {% for page in pages limit:3 offset:offset %}
-        <div class="column is-4">
-          <img src="img/{{ page.number }}.jpg" alt="">
-          <h6>{{page.title}}</h6>
-          <small>{{ page.about }} </small>
+      {% assign rows = group.size | divided_by: 3.0 | ceil %}
+
+      {% for i in (1..rows) %}
+        
+        <div class="columns">
+
+          {% assign offset = forloop.index0 | times: 3 %}
+
+          {% for item in group.items limit:3 offset:offset %}
+            <div class="column is-4 item">
+              <a href="img/{{ item.number }}.jpg" class="lightbox">
+                <img src="img/{{ item.number }}-thumb.jpg" alt="{{ page.serie }} {{ item.number }}">
+              </a>
+              <h5>{{ item.title }}</h5>
+              <small>{{ item.about }} </small>
+            </div>
+          {% endfor %}
+
         </div>
+
       {% endfor %}
+    {% endfor %}
 
-    </div>
-
-  {% endfor %}
+  </div>
+</section>

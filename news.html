@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+
+{% assign news = site.pages  | where: 'layout', 'news' %}
+
+
+<section class="section">
+  <div class="container">
+    
+    {% for new in news %}
+
+    	<h2>{{new.title}}</h2>
+    	<img src="img/news/{{new.img-url}}" alt="">
+    	<p>{{new.content}}</p>
+
+    {% endfor %}
+
+  </div>
+</section>

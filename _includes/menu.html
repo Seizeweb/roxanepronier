@@ -7,10 +7,10 @@
       </a>
     </li>
     <li class="menu-item">
-      <a class="is-active">Paintings</a>
+      <a href="{{ site.url }}/paintings.html" class="menu-top-item">Paintings</a>
       <ul>
 
-        {% assign pages = site.pages  | where: 'layout', 'serie' %}
+        {% assign pages = site.pages  | where: 'layout', 'serie' | sort: 'order' %}
 
         {% for page in pages %}
           <li class="menu-item"><a href="{{ page.permalink }}">{{ page.serie }}</a></li>
@@ -18,10 +18,10 @@
 
       </ul>
     </li>
-    <li class="menu-item"><a>News</a></li>
-    <li class="menu-item"><a>Exhibition</a></li>
-    <li class="menu-item"><a>Bio</a></li>
-    <li class="menu-item"><a>Contact</a></li>
+    <li class="menu-item"><a href="{{ site.url }}/news.html">News</a></li>
+    <li class="menu-item"><a href="{{ site.url }}/exhibition.html">Exhibition</a></li>
+    <li class="menu-item"><a href="{{ site.url }}/bio.html">Bio</a></li>
+    <li class="menu-item"><a href="{{ site.url }}/contact.html">Contact</a></li>
   </ul>
 
   <button class="button navbar-burger">
